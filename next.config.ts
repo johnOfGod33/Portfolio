@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Archive : le site principal est jeandedieu.dev, on retire cette version des résultats Google.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
